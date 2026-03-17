@@ -137,23 +137,6 @@
                 </div>
                 @endif
 
-                @if (!empty(getAllCurrencies()))
-                <!-- change language -->
-                <div class="ss-offcanvas-language mb-20">
-                    <form action="{{ route('set.currency') }}" method="post" id="sidebar-currency-form">
-                        @csrf
-                        @method('POST')
-
-                        <label for="currency" class="form-label">{{ __('frontend.change_currency') }}:</label>
-                        <select name="currency_code" id="sidebar-currency" class="form-select">
-                            @foreach (getAllCurrencies() as $currency)
-                            <option value="{{ $currency->code }}" {{ getSessionCurrency()['code'] == $currency->code ? 'selected' : '' }}>{{ $currency->title }}</option>
-                            @endforeach
-                        </select>
-                    </form>
-                </div>
-                @endif
-
                 @if ($settings?->enable_shop)
                 <label for="search" class="form-label">{{ __('frontend.search_label') }}</label>
                 <div class="ss-offcanvas-search position-relative">
