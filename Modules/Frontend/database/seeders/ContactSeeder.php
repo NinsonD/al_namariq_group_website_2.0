@@ -51,6 +51,42 @@ class ContactSeeder extends Seeder
                     'address' => '789 Berlin St, City, Country',
                     'address_link' => 'https://maps.app.goo.gl/878MgLGDS9X65mS48',
                 ]
+            ],
+            [
+                'key' => 'contact_four',
+                'default' => false,
+                'value' => [
+                    'name' => 'New York',
+                    'image' => 'uploads/web/contact-location-4.jpg',
+                    'phone' => '111-222-3333',
+                    'email' => 'newyork@mail.com',
+                    'address' => '456 New York Ave, City, Country',
+                    'address_link' => 'https://maps.app.goo.gl/example4',
+                ],
+            ],
+            [
+                'key' => 'contact_five',
+                'default' => false,
+                'value' => [
+                    'name' => 'London',
+                    'image' => 'uploads/web/contact-location-5.jpg',
+                    'phone' => '444-555-6666',
+                    'email' => 'london@mail.com',
+                    'address' => '101 London Rd, City, Country',
+                    'address_link' => 'https://maps.app.goo.gl/example5',
+                ],
+            ],
+            [
+                'key' => 'contact_six',
+                'default' => false,
+                'value' => [
+                    'name' => 'Tokyo',
+                    'image' => 'uploads/web/contact-location-6.jpg',
+                    'phone' => '777-888-9999',
+                    'email' => 'tokyo@mail.com',
+                    'address' => '202 Tokyo Blvd, City, Country',
+                    'address_link' => 'https://maps.app.goo.gl/example6',
+                ],
             ]
         ];
 
