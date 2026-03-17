@@ -38,8 +38,13 @@ trait UpdateSectionTrait {
         foreach ($images as $image) {
             if ($request->hasFile($image)) {
                 $oldPath = isset($updatedContent[$image]) ? $updatedContent[$image] : null;
-                $file_name = updateMedia($request->file($image), $oldPath, 'web');
-                $updatedContent[$image] = $file_name;
+                try {
+                    $file_name = updateMedia($request->file($image), $oldPath, 'web');
+                    $updatedContent[$image] = $file_name;
+                } catch (\Exception $e) {
+                    // If upload fails, keep the old value or set to null
+                    $updatedContent[$image] = $oldPath ?? null;
+                }
             }
             // Keep existing image if not replaced (no else clause needed)
         }

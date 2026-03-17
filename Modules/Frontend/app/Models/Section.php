@@ -39,6 +39,22 @@ class Section extends Model
         return $decoded instanceof \stdClass ? $decoded : null;
     }
 
+    public function setDefaultContentAttribute($value): void
+    {
+        // If it's an array, JSON encode it
+        if (is_array($value)) {
+            $this->attributes['default_content'] = json_encode($value);
+        } 
+        // If it's an object, JSON encode it
+        elseif (is_object($value)) {
+            $this->attributes['default_content'] = json_encode($value);
+        }
+        // Otherwise, store as-is (assume it's already JSON or null)
+        else {
+            $this->attributes['default_content'] = $value;
+        }
+    }
+
     protected function translatedAttribute(string $key): mixed
     {
         $locale = session('lang', getSiteLocale());
@@ -74,9 +90,4 @@ class Section extends Model
     {
         return $this->hasMany(SectionTranslation::class);
     }
-
-
-    protected $casts = [
-        'default_content' => 'array',
-    ];
 }
