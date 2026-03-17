@@ -84,7 +84,7 @@ trait UpdateSectionTrait {
         $translatedContent = $this->updateSection($section?->content, $request, $translatableFields);
 
         $section->update([
-            'default_content' => $content,
+            'default_content' => json_encode($content),
             'status' => $request->has('status'),
         ]);
 
