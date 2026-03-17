@@ -11,19 +11,24 @@ trait UpdateSectionTrait {
 
     private function updateSection($content, $request, array $fields, array $images = [], array $switches = [])
     {
+        // Create a fresh object to avoid encoding issues
+        $updatedContent = new \stdClass();
 
-        if (is_null($content)) {
-            $content = new \stdClass();
+        // If we have existing content, copy its properties
+        if (!is_null($content) && is_object($content)) {
+            foreach ($content as $key => $value) {
+                $updatedContent->$key = $value;
+            }
         }
 
         // Update text or array fields
         foreach ($fields as $field) {
             if ($request->has($field)) {
                 $value = $request->$field;
-                $content->$field = is_array($value) ? json_encode($value) : $value;
+                $updatedContent->$field = is_array($value) ? json_encode($value) : $value;
             } else {
                 // Force empty value if nothing was submitted
-                $content->$field = null;
+                $updatedContent->$field = null;
             }
         }
 
@@ -31,20 +36,21 @@ trait UpdateSectionTrait {
         foreach ($images as $image) {
             if ($request->hasFile($image)) {
                 $file_name = updateMedia($request->file($image), $content->$image ?? null, 'web');
-                $content->$image = $file_name;
+                $updatedContent->$image = $file_name;
             } elseif (isset($content->$image)) {
                 // Keep existing image
+                $updatedContent->$image = $content->$image;
             } else {
-                $content->$image = null;
+                $updatedContent->$image = null;
             }
         }
 
         // Update switch fields (boolean flags)
         foreach ($switches as $switch) {
-            $content->$switch = $request->has($switch);
+            $updatedContent->$switch = $request->has($switch);
         }
 
-        return $content;
+        return $updatedContent;
     }
 
     private function checkSection($slug, $page_id)
@@ -84,7 +90,7 @@ trait UpdateSectionTrait {
         $translatedContent = $this->updateSection($section?->content, $request, $translatableFields);
 
         $section->update([
-            'default_content' => json_encode($content),
+            'default_content' => $content,
             'status' => $request->has('status'),
         ]);
 
