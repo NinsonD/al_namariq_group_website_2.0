@@ -74,14 +74,6 @@
                                             </div>
                                         </li>
                                         <li>
-                                            <div class="tp-header-shop-cart">
-                                                <button class="cartmini-open-btn">
-                                                    {{ __('frontend.cart') }}
-                                                    <span class="ss-header-cart-count">0</span>
-                                                </button>
-                                            </div>
-                                        </li>
-                                        <li>
                                             <div class="tp-header-shop-lang d-none d-xl-block">
                                                 <button id="header-lang-toggle">
                                                     <span>{{ getSiteLocale() }}</span>
@@ -152,4 +144,3 @@
     </header>
 
 
-@include('frontend.products.cartmini')

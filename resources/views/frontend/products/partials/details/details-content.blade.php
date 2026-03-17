@@ -67,57 +67,6 @@
                 </p>
             </div>
 
-            <!-- price -->
-            <div class="tp-product-details-price-wrapper mb-20">
-                @if ($product->sale_price)
-                <span class="tp-product-details-price old-price">{{ themeCurrency($product->price) }}</span>
-                <span class="tp-product-details-price new-price">{{ themeCurrency($product->sale_price) }}</span>
-                @else
-                <span class="tp-product-details-price">{{ themeCurrency($product->price) }}</span>
-                @endif
-            </div>
-
-
-            <!-- actions -->
-            <div class="tp-product-details-action-wrapper">
-                <h3 class="tp-product-details-action-title">{{ __('frontend.quantity') }}</h3>
-                <div class="tp-product-details-action-item-wrapper d-flex align-items-center gap-3 mb-3">
-                    <div class="tp-product-details-quantity">
-                        <div class="tp-product-quantity">
-                            <span class="tp-cart-minus ss-pro-details-minus">
-                                <svg width="11" height="2" viewBox="0 0 11 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 1H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </span>
-                            <input class="tp-cart-input ss-pro-details-input" type="text" value="1">
-                            <span class="tp-cart-plus ss-pro-details-plus">
-                                <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 6H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M5.5 10.5V1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="tp-product-details-add-to-cart w-100">
-                        <button class="tp-product-details-add-to-cart-btn w-100 ss-pro-details-addToCart" data-id="{{ $product->id }}">{{ __('frontend.add_to_cart') }}</button>
-                    </div>
-                    <div class="tp-product-details-add-to-wishlist flex-grow-1">
-                        <button class="tp-product-details-add-to-wishlist-btn ss-add-to-wishlist-btn {{ $product->isWishlisted() ? 'added' : '' }}" data-id="{{ $product->id }}" type="button">
-                            <span class="default-heart">
-                                <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M9.01003 14.3608L2.21586 8.20671C-1.47662 4.51423 3.95133 -2.57534 9.01003 3.16031C14.0687 -2.57534 19.4721 4.53884 15.8042 8.20671L9.01003 14.3608Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </span>
-                            <span class="added-heart">
-                                <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M9.01003 14.3608L2.21586 8.20671C-1.47662 4.51423 3.95133 -2.57534 9.01003 3.16031C14.0687 -2.57534 19.4721 4.53884 15.8042 8.20671L9.01003 14.3608Z" fill="red" stroke="red" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
             @include('frontend.products.partials.details.product-attributes', ['sku' => $product->sku, 'category' => $product->category, 'tags' => $product->tags])
         </div>
     </div>

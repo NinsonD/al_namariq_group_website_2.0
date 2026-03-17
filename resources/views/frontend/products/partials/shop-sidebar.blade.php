@@ -13,21 +13,6 @@
     </div>
 
 
-    <!-- filter -->
-    <div class="tp-shop-widget mb-35">
-        <h3 class="tp-shop-widget-title no-border">{{ __('frontend.price_filter') }}</h3>
-        <div class="tp-shop-widget-content">
-            <a href="#" class="tp-shop-widget-filter p-relative">
-                <div id="slider-range" class="mb-10"></div>
-                <div class="tp-shop-widget-filter-info d-flex align-items-center justify-content-between">
-                    <span class="input-range">
-                        <input type="text" id="amount" readonly>
-                    </span>
-                    <button class="tp-shop-widget-filter-btn reset-price-filter-btn" type="button">{{ __('frontend.reset') }}</button>
-                </div>
-            </a>
-        </div>
-    </div>
     <!-- status -->
     <div class="tp-shop-widget mb-50">
         <h3 class="tp-shop-widget-title">

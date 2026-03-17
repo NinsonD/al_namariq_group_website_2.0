@@ -30,10 +30,7 @@
                                     <option value="default">
                                         {{ __('frontend.default') }}
                                     </option>
-                                    <option value="low" @if (request('sort_by') == 'low') selected @endif>{{ __('frontend.low_to_high') }}</option>
-                                    <option value="high" @if (request('sort_by') == 'high') selected @endif>{{ __('frontend.high_to_low') }}</option>
                                     <option value="new" @if (request('sort_by') == 'new') selected @endif>{{ __('frontend.new_added') }}</option>
-                                    <option value="sale" @if (request('sort_by') == 'sale') selected @endif>{{ __('frontend.on_sale') }}</option>
                                 </select>
                             </div>
                         </div>
@@ -64,19 +61,11 @@
     @include('frontend.layouts.footers.footer-shop', ['footer_menu_one' => $footer_menu_one, 'footer_menu_two' => $footer_menu_two])
 @endsection
 
-@push('css')
-<link rel="stylesheet" href="{{ asset('frontend/assets/css/slider-range.css') }}">
-@endpush
-
 @push('js')
-<script src="{{ asset('frontend/assets/js/range-slider.js') }}"></script>
+
 <script>
 "use strict";
 $(function () {
-    var currency_code = {!! json_encode(session('currency.symbol', '$')) !!};
-    var initialMin = {!! json_encode((int) $minPrice) !!};
-    var initialMax = {!! json_encode((int) $maxPrice) !!};
-
     const showing = "{{ __('frontend.showing') }}";
     const off = "{{ __('frontend.of') }}";
     const results = "{{ __('frontend.results') }}";
@@ -84,9 +73,6 @@ $(function () {
     const filter = {
         categories: [],
         ratings: [],
-        minPrice: initialMin,
-        maxPrice: initialMax,
-        on_sale: false,
         in_stock: false,
         out_of_stock: false,
         sort_by: 'default',
@@ -101,12 +87,6 @@ $(function () {
     if (urlParams.has('ratings')) {
         filter.ratings = urlParams.get('ratings').split(',');
         filter.ratings.forEach(r => $(`#rating_${r}`).prop('checked', true));
-    }
-    if (urlParams.has('min_price')) filter.minPrice = parseInt(urlParams.get('min_price'), 10) || initialMin;
-    if (urlParams.has('max_price')) filter.maxPrice = parseInt(urlParams.get('max_price'), 10) || initialMax;
-    if (urlParams.has('on_sale')) {
-        filter.on_sale = urlParams.get('on_sale') === 'true';
-        $('#on_sale').prop('checked', true);
     }
     if (urlParams.has('in_stock')) {
         filter.in_stock = true;
@@ -136,42 +116,10 @@ $(function () {
         if (e.which === 13) $('#searchBtn').click();
     });
 
-    $("#slider-range").slider({
-        range: true,
-        min: initialMin,
-        max: initialMax,
-        step: 1,
-        values: [filter.minPrice, filter.maxPrice],
-        slide: function (event, ui) {
-            $("#amount").val(`${currency_code}${ui.values[0]} - ${currency_code}${ui.values[1]}`);
-        },
-        change: function (event, ui) {
-            // ensure integers
-            filter.minPrice = parseInt(ui.values[0], 10);
-            filter.maxPrice = parseInt(ui.values[1], 10);
-            updateUrl();
-            fetchProducts();
-        }
-    });
-
-    $("#amount").val(`${currency_code}${filter.minPrice} - ${currency_code}${filter.maxPrice}`);
-
-    $('.reset-price-filter-btn').on('click', function () {
-        filter.minPrice = initialMin;
-        filter.maxPrice = initialMax;
-        $("#slider-range").slider("values", [filter.minPrice, filter.maxPrice]);
-        $("#amount").val(`${currency_code}${filter.minPrice} - ${currency_code}${filter.maxPrice}`);
-        updateUrl();
-        fetchProducts();
-    });
-
     function updateUrl(page = 1) {
         const params = new URLSearchParams();
         if (filter.categories.length) params.set('category', filter.categories.join(','));
         if (filter.ratings.length) params.set('ratings', filter.ratings.join(','));
-        if (filter.minPrice > initialMin) params.set('min_price', filter.minPrice);
-        if (filter.maxPrice < initialMax) params.set('max_price', filter.maxPrice);
-        if (filter.on_sale) params.set('on_sale', 'true');
         if (filter.in_stock) params.set('in_stock', 'true');
         if (filter.out_of_stock) params.set('out_of_stock', 'true');
         if (filter.sort_by && filter.sort_by !== 'default') params.set('sort_by', filter.sort_by);
@@ -183,18 +131,12 @@ $(function () {
     }
 
     function fetchProducts(page = 1) {
-        const priceMinBase = Math.round(filter.minPrice);
-        const priceMaxBase = Math.round(filter.maxPrice);
-
         $.ajax({
             url: window.location.pathname,
             method: 'GET',
             data: {
                 categories: filter.categories,
                 ratings: filter.ratings,
-                price_min: priceMinBase,
-                price_max: priceMaxBase,
-                on_sale: filter.on_sale ? 1 : null,
                 in_stock: filter.in_stock ? 1 : null,
                 out_of_stock: filter.out_of_stock ? 1 : null,
                 sort_by: filter.sort_by,
@@ -285,9 +227,6 @@ $(function () {
     if (
         filter.categories.length ||
         filter.ratings.length ||
-        filter.minPrice !== initialMin ||
-        filter.maxPrice !== initialMax ||
-        filter.on_sale ||
         filter.in_stock ||
         filter.out_of_stock ||
         filter.sort_by !== 'default' ||
@@ -306,9 +245,6 @@ $(function () {
     $('.reset-filters-btn').on('click', function () {
         filter.categories = [];
         filter.ratings = [];
-        filter.minPrice = initialMin;
-        filter.maxPrice = initialMax;
-        filter.on_sale = false;
         filter.in_stock = false;
         filter.out_of_stock = false;
         filter.sort_by = 'default';
@@ -317,9 +253,6 @@ $(function () {
 
         $('.category-filter').prop('checked', false);
         $('.rating-filter').prop('checked', false);
-        $('#slider-range').slider("values", [filter.minPrice, filter.maxPrice]);
-        $("#amount").val(`${currency_code}${filter.minPrice} - ${currency_code}${filter.maxPrice}`);
-        $('#on_sale').prop('checked', false);
         $('#in_stock').prop('checked', false);
         $('#out_of_stock').prop('checked', false);
         $('#shopSortBy').val('default');
@@ -333,9 +266,6 @@ $(function () {
         const shouldShow =
             filter.categories.length > 0 ||
             filter.ratings.length > 0 ||
-            filter.minPrice !== initialMin ||
-            filter.maxPrice !== initialMax ||
-            filter.on_sale ||
             filter.in_stock ||
             filter.out_of_stock ||
             filter.sort_by !== 'default' ||

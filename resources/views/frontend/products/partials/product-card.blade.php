@@ -8,11 +8,6 @@
     <div class="tp-product-item-thumb">
 
        <div class="tp-product-item-badge-wrapper z-index-1">
-           @if ($product->isOnSale())
-               <span class="tp-product-item-badge on-sale">
-                     {{ __('frontend.sale') }}
-               </span>
-           @endif
            @if ($product->isNew())
                <span class="tp-product-item-badge new">{{ __('frontend.new') }}</span>
            @endif
@@ -44,11 +39,6 @@
                 </span>
             </button>
         </div>
-        <div class="tp-product-item-btn">
-            <button class="tp-action-btn ss-add-to-cart-btn" data-id="{{ $product->id }}" type="button">
-                {{ __('frontend.add_to_cart') }}
-            </button>
-        </div>
     </div>
     <div class="tp-product-item-content">
         <h4 class="tp-product-item-title">
@@ -67,19 +57,5 @@
                 </span>
             @endfor
         </div>
-        <span class="tp-product-item-price">
-            @if ($product->isOnSale())
-                <span class="tp-product-item-price-new">
-                    {{ themeCurrency($product->sale_price) }}
-                </span>
-                <span class="tp-product-item-price-old">
-                    {{ themeCurrency($product->price) }}
-                </span>
-            @else
-                <span class="tp-product-item-price-new">
-                    {{ themeCurrency($product->price) }}
-                </span>
-            @endif
-        </span>
     </div>
 </div>
