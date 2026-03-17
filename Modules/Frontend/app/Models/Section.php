@@ -25,9 +25,13 @@ class Section extends Model
     {
         if (is_null($value)) return null;
 
-        $decoded = json_decode($value);
+        // If it's already an array (from Laravel's array cast), convert to object
+        if (is_array($value)) {
+            return (object) $value;
+        }
 
-        // If decoded as array, cast to object
+        // If it's a JSON string, decode it
+        $decoded = json_decode($value);
         if (is_array($decoded)) {
             return (object) $decoded;
         }

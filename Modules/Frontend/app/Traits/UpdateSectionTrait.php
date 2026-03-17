@@ -11,13 +11,15 @@ trait UpdateSectionTrait {
 
     private function updateSection($content, $request, array $fields, array $images = [], array $switches = [])
     {
-        // Create a fresh object to avoid encoding issues
-        $updatedContent = new \stdClass();
+        // Create a fresh array to avoid encoding issues
+        $updatedContent = [];
 
         // If we have existing content, copy its properties
-        if (!is_null($content) && is_object($content)) {
-            foreach ($content as $key => $value) {
-                $updatedContent->$key = $value;
+        if (!is_null($content)) {
+            if (is_object($content)) {
+                $updatedContent = (array) $content;
+            } elseif (is_array($content)) {
+                $updatedContent = $content;
             }
         }
 
@@ -25,29 +27,26 @@ trait UpdateSectionTrait {
         foreach ($fields as $field) {
             if ($request->has($field)) {
                 $value = $request->$field;
-                $updatedContent->$field = is_array($value) ? json_encode($value) : $value;
+                $updatedContent[$field] = is_array($value) ? json_encode($value) : $value;
             } else {
                 // Force empty value if nothing was submitted
-                $updatedContent->$field = null;
+                $updatedContent[$field] = null;
             }
         }
 
         // Update image fields
         foreach ($images as $image) {
             if ($request->hasFile($image)) {
-                $file_name = updateMedia($request->file($image), $content->$image ?? null, 'web');
-                $updatedContent->$image = $file_name;
-            } elseif (isset($content->$image)) {
-                // Keep existing image
-                $updatedContent->$image = $content->$image;
-            } else {
-                $updatedContent->$image = null;
+                $oldPath = isset($updatedContent[$image]) ? $updatedContent[$image] : null;
+                $file_name = updateMedia($request->file($image), $oldPath, 'web');
+                $updatedContent[$image] = $file_name;
             }
+            // Keep existing image if not replaced (no else clause needed)
         }
 
         // Update switch fields (boolean flags)
         foreach ($switches as $switch) {
-            $updatedContent->$switch = $request->has($switch);
+            $updatedContent[$switch] = $request->has($switch);
         }
 
         return $updatedContent;
