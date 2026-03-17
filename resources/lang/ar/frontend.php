@@ -108,7 +108,6 @@ return array (
 'already_have_an_account' => 'هل لديك حساب بالفعل؟',
 'share' => 'مشاركة:',
 'follow' => 'تابع',
-'award_winning_agency' => 'وكالة حائزة على جوائز',
 'send_a_message' => 'أرسل رسالة',
 'view_more' => 'عرض المزيد',
 'view_details' => 'عرض التفاصيل',

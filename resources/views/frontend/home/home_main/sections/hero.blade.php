@@ -2,9 +2,7 @@
 <div class="dgm-hero-top pt-20">
    <div class="dgm-hero-ptb grey-bg-2 fix z-index-1 p-relative">
       <div class="dgm-hero-bg" data-background="{{ asset($default_content?->bg_image) }}"></div>
-      <div class="dgm-hero-rotate-text">
-            <span>{{ __('frontend.award_winning_agency') }}</span>
-      </div>
+
       <div class="dgm-hero-social-box">
             <div class="dgm-hero-social-text">
                <span>{{ __('frontend.follow') }}</span>

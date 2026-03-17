@@ -106,7 +106,6 @@ return array (
 'already_have_an_account' => 'क्या आपके पास पहले से खाता है?',
 'share' => 'साझा करें:',
 'follow' => 'अनुसरण करें',
-'award_winning_agency' => 'पुरस्कार विजेता एजेंसी',
 'send_a_message' => 'संदेश भेजें',
 'view_more' => 'और देखें',
 'view_details' => 'विवरण देखें',

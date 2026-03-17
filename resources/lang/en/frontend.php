@@ -106,7 +106,6 @@ return array (
   'already_have_an_account' => 'Already have an account?',
   'share' => 'Share:',
   'follow' => 'Follow',
-  'award_winning_agency' => 'Award Winning Agency',
   'send_a_message' => 'Send a Message',
   'view_more' => 'View More',
   'view_details' => 'View Details',
