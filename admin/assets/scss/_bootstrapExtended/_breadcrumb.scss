@@ -1,0 +1,17 @@
+
+  
+.breadcrumb-item {
+    color: $breadcrumb-item-color;
+    & a{
+        text-decoration: none;
+        color: inherit;
+        &:hover{
+            color: $primary;
+            text-decoration: underline;
+        }
+    }
+    &.active {
+      
+    }
+  }
+  

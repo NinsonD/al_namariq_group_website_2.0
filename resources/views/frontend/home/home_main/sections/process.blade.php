@@ -1,0 +1,41 @@
+<!-- step area start -->
+<div class="dgm-step-area pb-50">
+    <div class="container container-1230">
+        <div class="row align-items-end">
+            <div class="col-xl-3 col-lg-4 col-md-6">
+                <div class="dgm-step-item p-relative dgm-step-space-1 mb-80">
+                    <h4 class="dgm-step-title mb-25"> {!! clean(pureText($content?->title)) !!}</h4>
+
+                    @if (!empty($content?->btn_text) && !empty($default_content?->btn_url))
+
+                    <a class="tp-btn-yellow-green green-solid" href="{{ url($default_content?->btn_url ?? '#') }}">
+                        <i>
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.4221 8.95389C1.66368 7.63144 1.29748 6.55158 1.07667 5.45697C0.750098 3.83806 1.49745 2.25665 2.7355 1.24758C3.25876 0.821106 3.85858 0.966814 4.168 1.52192L4.86655 2.77513C5.42023 3.76845 5.69707 4.26511 5.64216 4.79167C5.58725 5.31823 5.21389 5.74709 4.46718 6.6048L2.4221 8.95389ZM2.4221 8.95389C3.9572 11.6306 6.36627 14.041 9.04611 15.5779M9.04611 15.5779C10.3686 16.3363 11.4484 16.7025 12.543 16.9233C14.1619 17.2499 15.7434 16.5026 16.7524 15.2645C17.1789 14.7412 17.0332 14.1414 16.4781 13.832L15.2249 13.1335C14.2315 12.5798 13.7349 12.3029 13.2083 12.3578C12.6818 12.4127 12.2529 12.7861 11.3952 13.5328L9.04611 15.5779Z" stroke="currentcolor" stroke-width="1.5" stroke-linejoin="round" />
+                                <path d="M10.6001 4.86548C11.7387 5.34899 12.6511 6.26142 13.1346 7.4M11.1233 1C13.9531 1.81661 16.1834 4.04682 17.0001 6.8765" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" />
+                            </svg>
+                        </i>
+                        <span>
+                            <span class="text-1"> {{ $content?->btn_text }}</span>
+                            <span class="text-2"> {{ $content?->btn_text }}</span>
+                        </span>
+                    </a>
+                    @endif
+                </div>
+            </div>
+
+            @for ($index = 1; $index <= 3; $index++)
+                <div class="col-xl-3 col-lg-4 col-md-6">
+                    <div class="dgm-step-item p-relative dgm-step-space-{{ $index }} mb-80">
+                        <span class="dgm-step-number">{{ str_pad($index, 2, '0', STR_PAD_LEFT) }}</span>
+                        <h4 class="dgm-step-title-sm">{{ $content?->{'process_title_' . $index} }}</h4>
+                        <p>
+                            {!! clean(pureText($content?->{'process_description_' . $index})) !!}
+                        </p>
+                    </div>
+                </div>
+            @endfor
+        </div>
+    </div>
+</div>
+<!-- step area end -->

@@ -1,0 +1,13 @@
+.btn-group-xs > .btn {
+    @extend .btn-xs;
+  }
+.btn-group-sm > .btn {
+    @extend .btn-sm;
+  }
+  
+  .btn-group-lg > .btn {
+    @extend .btn-lg;
+  }
+  .btn-group-xl > .btn {
+    @extend .btn-xl;
+  }

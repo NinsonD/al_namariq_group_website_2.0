@@ -1,0 +1,4 @@
+<svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1 7.00001C1 7.00001 3.90909 1.18182 9 1.18182C14.0909 1.18182 17 7.00001 17 7.00001C17 7.00001 14.0909 12.8182 9 12.8182C3.90909 12.8182 1 7.00001 1 7.00001Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M9.00018 9.18181C10.2052 9.18181 11.182 8.20498 11.182 6.99999C11.182 5.79501 10.2052 4.81818 9.00018 4.81818C7.79519 4.81818 6.81836 5.79501 6.81836 6.99999C6.81836 8.20498 7.79519 9.18181 9.00018 9.18181Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

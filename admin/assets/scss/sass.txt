@@ -1,0 +1,13 @@
+sass --watch D:\Office\conca\src\assets\scss\conca.scss:D:\Office\conca\src\assets\css\conca.css
+sass --watch D:\Office\conca\src\assets\scss\bootstrap.scss:D:\Office\conca\src\assets\css\bootstrap.css
+
+sass --watch D:\Office\conca-dashboard-new\src\assets\scss\bootstrap.scss:D:\Office\conca-dashboard-new\src\assets\css\bootstrap.css
+
+
+sass --watch D:\html\conca\src\assets\scss\conca.scss:D:\html\conca\src\assets\css\conca.css
+sass --watch D:\html\conca\src\assets\scss\bootstrap.scss:D:\html\conca\src\assets\css\bootstrap.css
+
+
+sass --watch /Users/shahnewaz/HTML/conca/src/assets/scss/conca.scss:/Users/shahnewaz/HTML/conca/src/assets/css/conca.css
+
+sass --watch /Users/shahnewaz/HTML/conca/src/assets/scss/bootstrap.scss:/Users/shahnewaz/HTML/conca/src/assets/css/bootstrap.css

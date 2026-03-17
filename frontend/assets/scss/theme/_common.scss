@@ -1,0 +1,273 @@
+@use '../utils' as *;
+/*---------------------------------
+    1.2 Common Classes
+---------------------------------*/
+.w-img{
+	& img{
+		width: 100%;
+	}
+}
+.m-img{
+	& img{
+		max-width: 100%;
+	}
+}
+.fix {
+    overflow:hidden
+}
+.clear{
+    clear: both;
+}
+
+.z-index-1{
+	position: relative;
+	z-index: 1;
+}
+.z-index-2{
+	position: relative;
+	z-index: 2;
+}
+.z-index-3{
+	position: relative;
+	z-index: 3;
+}
+.z-index-4{
+	position: relative;
+	z-index: 4;
+}
+.z-index-5{
+	position: relative;
+	z-index: 5;
+}
+.z-index-6{
+	position: relative;
+	z-index: 6;
+}
+.z-index-7{
+	position: relative;
+	z-index: 7;
+}
+.z-index-8{
+	position: relative;
+	z-index: 8;
+}
+.z-index-9{
+	position: relative;
+	z-index: 9;
+}
+.z-index-10{
+	position: relative;
+	z-index: 10;
+}
+
+.gx-7{
+	--bs-gutter-x: 7px;
+}
+.gx-10{
+	--bs-gutter-x: 10px;
+}
+.gx-12{
+	--bs-gutter-x: 12px;
+}
+.gx-15{
+	--bs-gutter-x: 15px;
+}
+.gx-20{
+	--bs-gutter-x: 20px;
+}
+.gx-24{
+	--bs-gutter-x: 24px;
+}
+.gx-30{
+	--bs-gutter-x: 30px;
+}
+.gx-40{
+	--bs-gutter-x: 40px;
+}
+.gx-45{
+	--bs-gutter-x: 45px;
+}
+.gx-50{
+	--bs-gutter-x: 50px;
+}
+.gx-55{
+	--bs-gutter-x: 55px;
+}
+.gx-60{
+	--bs-gutter-x: 60px;
+}
+.gx-70{
+	--bs-gutter-x: 70px;
+}
+.gx-80{
+	--bs-gutter-x: 80px;
+}
+.gx-90{
+	--bs-gutter-x: 90px;
+}
+.gx-100{
+	--bs-gutter-x: 100px;
+}
+.gx-135{
+	--bs-gutter-x: 135px;
+	@media #{$md}{
+		--bs-gutter-x: 30px;
+	}
+}
+
+.overflow-y-visible{
+	overflow-x: hidden;
+	overflow-y: visible;
+}
+.text-capitalize{
+	text-transform: capitalize;
+}
+.text-uppercase{
+	text-transform: uppercase;
+}
+.p-relative{
+	position: relative;
+}
+.p-absolute{
+	position: absolute;
+}
+.include-bg{
+	@include tp-background();
+}
+
+/* dropcap */
+.tp-dropcap{
+	&::first-letter{
+		float: left;
+		width: 65px;
+		height: 85px;
+		font-size: 90px;
+		line-height: .8;
+		font-weight: 500;
+		margin-right: 5px;
+		text-align: center;
+		line-height: inherit;
+		text-transform: capitalize;
+		color: var(--tp-common-white);
+		font-family: var(--tp-ff-body);
+	}
+}
+
+.coffe-bg{
+	background-color: var(--tp-coffe-1);
+}
+
+.counter-row {
+	counter-reset: count;
+}
+
+.ss-google-tag-manager{
+    display: none;
+    visibility: hidden;
+}
+
+
+.custom-page{
+
+    /* Headings */
+    h1, h2, h3, h4, h5, h6 {
+        margin: 1.2em 0 0.6em;
+        font-weight: 600;
+        line-height: 1.3;
+        color: #222;
+    }
+
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    h3 { font-size: 1.5rem; }
+    h4 { font-size: 1.3rem; }
+    h5 { font-size: 1.1rem; }
+    h6 { font-size: 1rem; }
+
+    /* Paragraphs */
+    p {
+        margin: 0 0 1em;
+    }
+
+    /* Links */
+    a {
+        color: var(--tp-theme-primary);
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+
+    /* Images */
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 1em 0;
+        border-radius: 4px;
+    }
+
+    /* Lists */
+    ul, ol {
+        margin: 0 0 1em 1.5em;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 0.5em;
+    }
+
+    /* Blockquote */
+    blockquote {
+        margin: 1em 0;
+        padding: 0.8em 1em;
+        border-left: 4px solid #007bff;
+        background: #f9f9f9;
+        font-style: italic;
+        color: #555;
+    }
+
+    /* Tables */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1em 0;
+        font-size: 0.95rem;
+    }
+    table th, table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+    table th {
+        background: #f1f1f1;
+        font-weight: 600;
+    }
+
+    /* Buttons */
+    button, .btn {
+        display: inline-block;
+        padding: 10px 16px;
+        border: none;
+        border-radius: 4px;
+        background: #007bff;
+        color: #fff;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+    button:hover, .btn:hover {
+        background: #0056b3;
+    }
+
+    /* Responsive Layout */
+    @media (max-width: 768px) {
+    body {
+        font-size: 15px;
+        padding: 0 15px;
+    }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.6rem; }
+    h3 { font-size: 1.3rem; }
+    }
+
+}

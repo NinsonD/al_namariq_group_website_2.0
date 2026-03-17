@@ -1,0 +1,182 @@
+@import '../_bootstrapExtended/variables-color';
+@import './custom-variables';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+button{
+    outline: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+
+
+.btn-custom-secondary{
+    background-color: var(--clr-bg-gray);
+    color: var(--clr-custom-secondary);
+    border: 0;
+    outline: 0;
+
+    &:hover,
+    &:focus,
+    &:active{
+        background-color: #EDEDF0;
+        color: var(--clr-custom-secondary);
+        border-color: #EDEDF0;
+    }
+    
+}
+
+.btn-cancel{
+    padding: 8px 16px;
+
+    &:hover,
+    &:focus,
+    &:active{
+        background-color: rgba($primary, $alpha: .1) !important;
+        color: var(--bs-primary) !important;
+        border-color: rgba($primary, $alpha: .1) !important;
+    }
+
+    &.danger{
+        &:hover,
+        &:focus,
+        &:active{
+            background-color: rgba($danger, $alpha: .1) !important;
+            color: var(--bs-danger) !important;
+            border-color: rgba($danger, $alpha: .1) !important;
+        }
+    }
+}
+
+.btn-outline-secondary-custom{
+    background-color: transparent;
+    color: var(--clr-custom-paragraph);
+    border: 1px solid var(--clr-border-gray);
+
+    &:hover,
+    &:focus,
+    &:active{
+        background-color: var(--clr-bg-gray) !important;
+        color: var(--clr-custom-paragraph) !important;
+        border-color: var(--clr-bg-gray) !important;
+    }
+}
+
+.fz-12px{
+    font-size: 12px;
+}
+
+.fz-13px{
+    font-size: 13px;
+}
+
+.fz-15px{
+    font-size: 15px;
+}
+
+.fz-16px{
+    font-size: 16px;
+}
+
+.fz-18px{
+    font-size: 18px;
+}
+
+.text-hover-underline{
+    text-decoration: none !important;
+    &:hover{
+        text-decoration: underline !important;
+    }
+}
+
+.height-4px{
+    height: 4px !important;
+}
+
+.card-bg{
+    background-color: var(--bs-card-bg);
+}
+
+.shadow-custom{
+    box-shadow: 0 2px 2px -1px rgba(25, 24, 34, 0.1), 0 1px 3px 0 rgba(25, 24, 34, 0.08);
+}
+
+.project-card-shadow{
+    box-shadow: 0 2px 2px -1px rgba(25, 24, 34, 0.1), 0 1px 3px 0 rgba(25, 24, 34, 0.08), 0 -4px 0 0 #ddd;
+}
+
+
+.rounded-custom{
+    border-radius: 0.75rem;
+}
+
+
+
+.common-link-btn{
+    color: #716F7E;
+    text-decoration: none !important;
+    &:hover{
+        color: var(--bs-primary) !important;
+    }
+}
+
+
+.custom-card-action-btn{
+    --btn-size: 36px;
+    width: var(--btn-size);
+    height: var(--btn-size);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #89898B;
+    border-radius: 6px;
+    transition: all 0.3s ease-in-out;
+
+    &:hover{
+        color: #191822;
+        background-color: #EDEDF0;
+    }
+
+    &.blur-bg{
+        background-color: rgba($color: #fff, $alpha: .16);
+        backdrop-filter: blur(14px);
+        color: #fff;
+
+        &:hover{
+            background-color: var(--bs-white);
+            color: #191822;
+        }
+    }
+}
+
+.pure-slide-tab-bar{
+    position: absolute;
+    top: 0;
+    height: 2px;
+    background-color: var(--bs-primary);
+    transition: all 0.3s ease-in-out;
+}
+
+.table-invoice-btn{
+    color: var(--clr-text-custom-paragraph);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none !important;
+    border: 1px solid var(--clr-border-gray);
+    transition: all 0.3s ease-in-out;
+    border-radius: 30px;
+    padding: 4px 16px;
+
+    &:hover{
+        background-color: rgba($primary, $alpha: .06);
+        border-color: rgba($primary, $alpha: .06);
+        color: $primary;
+    }
+}

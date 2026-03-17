@@ -1,0 +1,1 @@
+{!! clean(pureText(__('admin.icon_class_info'))) !!} {{ __('admin.get_your_icon_class') }} <a href="https://fontawesome.com/icons" target="_blank">{{ __('admin.fontawesome') }} </a> &nbsp; {{ __('admin.fontawesome_free_description') }}

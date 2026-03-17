@@ -1,0 +1,5 @@
+sass --watch /Users/shahnewaz/laravel/agntix/public/frontend/assets/scss/main.scss:/Users/shahnewaz/laravel/agntix/public/frontend/assets/css/main.css
+
+sass --watch D:\laragon\www\agntix\public\frontend\assets\scss\main.scss:D:\laragon\www\agntix\public\frontend\assets\css\main.css
+
+sass --watch D:\laragon\www\agntix\public\frontend\assets\scss\layout\rtl\index.scss:D:\laragon\www\agntix\public\frontend\assets\css\rtl.css

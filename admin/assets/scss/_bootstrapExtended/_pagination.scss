@@ -1,0 +1,4 @@
+@each $color, $value in $theme-colors {
+    @include conca-pagination-variant('.pagination-#{$color}', $value);
+    @include conca-pagination-outline-variant('.pagination-outline-#{$color}', $value);
+}

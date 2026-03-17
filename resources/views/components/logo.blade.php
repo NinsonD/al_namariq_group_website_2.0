@@ -1,0 +1,1 @@
+<img width="140" src="{{ asset($settings->logo) }}" alt="{{ config('app.name') }}">
